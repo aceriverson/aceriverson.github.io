@@ -8,14 +8,63 @@
     <meta name="description" content="Portfolio">
     <meta name="author" content="Acer Iverson">
 
-    <link rel="stylesheet" href="css/styles.css?v=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto" />
+    <link rel='stylesheet' media='screen and (min-width: 901px)' href='styles.css' />
+    <link rel='stylesheet' media='screen and (max-width: 900px)' href='styles-mobile.css' />
+
+    
 
   </head>
 
   <body>
 
-    <h1>Hello</h1>
+    <div class="main">
+        <img src="src/shot-transparent.png" class="shot">
+        <div class="infoblock slideFromBottom">
+          <div class="card">
+            <h1>Acer Iverson</h1>
+            <div style="display: flex; flex: 1; flex-direction: row;">
+              <div style="display: flex; flex: 1; flex-direction: column;">
+                <p><b>BS</b>&nbspComputer&nbspScience</p>
+                <p><i style="font-size: small; color: #9D907A">Expected 12/2023</i></p>
+              </div>
+              <div style="display: flex; flex: 1; flex-direction: column;">
+                <p><b>Harvard University</b></p>
+                <p><i style="font-size: small; color: #9D907A">Cambridge, MA</i></p>
+              </div>
+            </div>
+          </div>
+          <div class="block">
+            <h1>About</h1>
+            <p>
+              While taking a gap semester for Fall 2020, I have worked on expanding my
+              skillset. Frameworks, languages, and libraries I have worked with include:
+              <ul>
+                <li>JavaScript</li>
+                <li>Electron</li>
+                <li>React Native</li>
+                <li>MySQL</li>
+                <li>SQLite</li>
+              </ul>
+            </p>
+            <p>Outside of my computer science studies, I run for the Harvard Cross Country and Track team.
+                I am also pursuing a secondary in History of Science.
+            </p>
+          </div>
+        </div>
+    </div>
 
-    <script src="js/scripts.js"></script>
+    
+    <div class="contact-button">
+      <a href="https://www.linkedin.com/in/aceriverson/" target="_blank">
+        <img id="contact-button" src="src/linkedin.png" class="contact-button-img">
+      </a>
+    </div>
+
+
+    <script>
+
+    </script>
   </body>
 </html>
