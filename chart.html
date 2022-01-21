@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <canvas id="myChart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const gradientStroke = document.getElementById('myChart').getContext("2d").createLinearGradient(0, 0, 0, 400);
+        gradientStroke.addColorStop(0, "rgba(249, 167, 127, .6)");
+        gradientStroke.addColorStop(1, "rgba(255, 255, 255, .6)");
+
+        const chartAreaBorder = {
+            id: 'chartAreaBorder',
+            beforeDraw(chart, args, options) {
+                const {ctx, chartArea: {left, top, width, height}} = chart;
+                ctx.save();
+                ctx.strokeStyle = options.borderColor;
+                ctx.lineWidth = options.borderWidth;
+                ctx.setLineDash(options.borderDash || []);
+                ctx.lineDashOffset = options.borderDashOffset;
+                ctx.strokeRect(left, top, width, height);
+                ctx.restore();
+            }
+        };
+        
+        const labels = ["    MON", "TUES", "WEDS", "THURS", "FRI", "SAT", "SUN    "];
+
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: "",
+                    backgroundColor: "#f9a77f",
+                    borderColor: "#fc5200",
+                    data: [13, 18.5, 15, 13, 18, 18.5, 0],
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                },
+            ],
+        };
+
+        const config = {
+            type: "line",
+            data: data,
+            plugins: [chartAreaBorder],
+            options: {
+                pointBackgroundColor: 'white',
+                pointBorderWidth: '2.5',
+                pointRadius: '6',
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    chartAreaBorder: {
+                        borderColor: '#dfdfe8',
+                        borderWidth: 1.5
+                    }
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            display: false,
+                        },
+                        ticks: {
+                            callback: function(value, index, values) {
+                                return value + " mi"
+                            },
+                            maxTicksLimit: 3,
+                            padding: 10,
+                            font: {
+                                family: "MaisonNeue,Segoe UI,Helvetica Neue,-apple-system,system-ui,BlinkMacSystemFont,Roboto,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol"
+                            }
+                        },
+
+                    },
+                    x: {
+                        grid: {
+                            lineWidth: 1.5,
+                            color: "#dfdfe8",
+                            z: 0,
+                            drawTicks: false,
+                        },
+                        ticks: {
+                            font: {
+                                family: "MaisonNeue,Segoe UI,Helvetica Neue,-apple-system,system-ui,BlinkMacSystemFont,Roboto,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol"
+                            }
+                        },
+                    }
+                }
+            }
+        };
+
+        const myChart = new Chart(document.getElementById("myChart"), config);
+    </script>
+  </body>
+</html>
